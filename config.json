@@ -1,0 +1,87 @@
+{
+  "contracts": {
+    "ESM25_FUT_CME": {
+      "checkpoint_tas": 23472496,
+      "checkpoint_depth": {
+        "date": "2025-04-08",
+        "rec": 17420600
+      },
+      "price_adj": 0.01,
+      "tas": true,
+      "depth": true
+    }
+  },
+  "db_path": "data/tick.db",
+  "sc_root": "C:/SierraChart",
+  "sleep_int": 1,
+  "batch_size": 2500,
+  "maintenance_interval": 86400,
+  "backup_interval": 604800,
+  "health_check_interval": 300,
+  "validation": {
+    "timestamp_tolerance_tas": 1000,
+    "timestamp_tolerance_depth": 1000,
+    "max_anomalies_percent_tas": 2.0,
+    "max_anomalies_percent_depth": 5.0,
+    "filter_problematic_records": true
+  },
+  "error_handling": {
+    "skip_invalid_batches": true,
+    "run_data_validator_on_health_check": false,
+    "retry_failed_operations": true,
+    "known_problem_records": {
+      "ESM25_FUT_CME": []
+    }
+  },
+  "monitoring": {
+    "alert_on_errors": true,
+    "max_error_rate": 10,
+    "stalled_processing_threshold_minutes": 15,
+    "low_disk_space_threshold_gb": 5,
+    "enable_prometheus": true,
+    "prometheus_port": 9090
+  },
+  "memory": {
+    "warning_threshold_mb": 4000,
+    "critical_threshold_mb": 8000,
+    "check_interval_seconds": 300,
+    "auto_collect": true
+  },
+  "storage": {
+    "enable_partitioning": true,
+    "cold_db_path": "data/tick.cold.db",
+    "archive_dir": "data/archives",
+    "cold_threshold_days": 30,
+    "auto_move_to_cold": true,
+    "move_interval_hours": 24,
+    "auto_archive": true,
+    "archive_interval_days": 30,
+    "archive_age_days": 365
+  },
+  "cache": {
+    "enable_redis": false,
+    "redis_host": "localhost",
+    "redis_port": 6379,
+    "redis_db": 0,
+    "default_ttl": 60,
+    "namespace": "sietl:"
+  },
+  "realtime": {
+    "enable_websockets": true,
+    "host": "0.0.0.0",
+    "port": 8001,
+    "max_connections": 100,
+    "throttle_ms": 0
+  },
+  "multiprocessing": {
+    "enabled": true,
+    "max_workers": 4
+  },
+  "api": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "enable_cors": true,
+    "throttle_requests": true,
+    "max_requests_per_minute": 600
+  }
+}
